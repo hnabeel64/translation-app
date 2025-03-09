@@ -15,9 +15,9 @@ class TranslationFactory extends Factory
     {
         return [
             'locale_id' => Locale::inRandomOrder()->first()->id ?? Locale::factory()->create()->id,
-            'key' => 'key_' . self::$counter++, // Unique key without faker's unique()
+            'key' => 'key_' . self::$counter++,
             'content' => $this->faker->sentence,
-            'tags' => json_encode([$this->faker->word]),
+            'tags' => json_encode([$this->faker->randomElement(['desktop', 'mobile', 'web'])]),
         ];
     }
 }
